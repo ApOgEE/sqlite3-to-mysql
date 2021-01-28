@@ -310,11 +310,7 @@ class SQLite3toMySQL:
                 name=column["name"],
                 type=self._translate_type_from_sqlite_to_mysql(column["type"]),
                 notnull="NOT NULL" if column["notnull"] or column["pk"] else "NULL",
-                auto_increment="AUTO_INCREMENT"
-                if column["pk"]
-                and self._translate_type_from_sqlite_to_mysql(column["type"])
-                in {"INT", "BIGINT"}
-                else "",
+                auto_increment="",
             )
             if column["pk"] > 0:
                 primary_key = {"column": column["name"], "length": ""}
