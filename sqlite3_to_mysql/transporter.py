@@ -583,7 +583,7 @@ class SQLite3toMySQL:
                     )
                     columns = [column[0] for column in self._sqlite_cur.description]
                     sql = """
-                        INSERT IGNORE
+                        INSERT
                         INTO `{table}` ({fields})
                         VALUES ({placeholders})
                     """.format(
